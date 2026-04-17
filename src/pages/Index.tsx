@@ -63,12 +63,12 @@ const EVENTS = [
 ];
 
 const PARTNERS = [
-  { id: 1, type: "store", name: "Zara", desc: "Официальный партнёр каталога", logo: "👗", tag: "Магазин", color: "from-zinc-800 to-zinc-900" },
-  { id: 2, type: "store", name: "H&M", desc: "Интеграция с реальным каталогом", logo: "🛍", tag: "Магазин", color: "from-red-900/40 to-zinc-900" },
-  { id: 3, type: "store", name: "Mango", desc: "Актуальные коллекции и скидки", logo: "✦", tag: "Магазин", color: "from-amber-900/30 to-zinc-900" },
-  { id: 4, type: "stylist", name: "Анна Белова", desc: "Персональный стилист, 8 лет опыта. Обучает AI-модель.", logo: "👩‍🎨", tag: "Стилист", color: "from-purple-900/30 to-zinc-900" },
-  { id: 5, type: "stylist", name: "Дмитрий Ковалёв", desc: "Мужской стиль и бизнес-образы", logo: "🧑‍💼", tag: "Стилист", color: "from-blue-900/30 to-zinc-900" },
-  { id: 6, type: "delivery", name: "Яндекс Доставка", desc: "Быстрая доставка из магазинов за 2 часа", logo: "🚀", tag: "Доставка", color: "from-yellow-900/40 to-zinc-900" },
+  { id: 1, type: "store", name: "Zara", desc: "Официальный партнёр каталога", logo: "👗", tag: "Магазин" },
+  { id: 2, type: "store", name: "H&M", desc: "Интеграция с реальным каталогом", logo: "🛍", tag: "Магазин" },
+  { id: 3, type: "store", name: "Mango", desc: "Актуальные коллекции и скидки", logo: "✦", tag: "Магазин" },
+  { id: 4, type: "stylist", name: "Анна Белова", desc: "Персональный стилист, 8 лет опыта. Обучает AI-модель.", logo: "👩‍🎨", tag: "Стилист" },
+  { id: 5, type: "stylist", name: "Дмитрий Ковалёв", desc: "Мужской стиль и бизнес-образы", logo: "🧑‍💼", tag: "Стилист" },
+  { id: 6, type: "delivery", name: "Яндекс Доставка", desc: "Быстрая доставка из магазинов за 2 часа", logo: "🚀", tag: "Доставка" },
 ];
 
 const ORDERS = [
@@ -85,12 +85,12 @@ const MaleSilhouette = ({ bodyType }: { bodyType: BodyType }) => {
     <svg viewBox="0 0 120 240" className="w-full h-full" fill="none">
       <defs>
         <linearGradient id="bodyGradM" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="hsl(42,65%,62%)" stopOpacity="0.3"/>
-          <stop offset="100%" stopColor="hsl(42,65%,40%)" stopOpacity="0.1"/>
+          <stop offset="0%" stopColor="hsl(0,0%,70%)" stopOpacity="0.3"/>
+          <stop offset="100%" stopColor="hsl(0,0%,50%)" stopOpacity="0.1"/>
         </linearGradient>
         <linearGradient id="outlineM" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="hsl(42,65%,75%)"/>
-          <stop offset="100%" stopColor="hsl(42,65%,45%)"/>
+          <stop offset="0%" stopColor="hsl(0,0%,80%)"/>
+          <stop offset="100%" stopColor="hsl(0,0%,55%)"/>
         </linearGradient>
       </defs>
       {/* Head */}
@@ -123,12 +123,12 @@ const FemaleSilhouette = ({ bodyType }: { bodyType: BodyType }) => {
     <svg viewBox="0 0 120 240" className="w-full h-full" fill="none">
       <defs>
         <linearGradient id="bodyGradF" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="hsl(42,65%,62%)" stopOpacity="0.35"/>
-          <stop offset="100%" stopColor="hsl(320,40%,50%)" stopOpacity="0.1"/>
+          <stop offset="0%" stopColor="hsl(0,0%,70%)" stopOpacity="0.35"/>
+          <stop offset="100%" stopColor="hsl(0,0%,60%)" stopOpacity="0.1"/>
         </linearGradient>
         <linearGradient id="outlineF" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="hsl(42,65%,75%)"/>
-          <stop offset="100%" stopColor="hsl(320,50%,60%)"/>
+          <stop offset="0%" stopColor="hsl(0,0%,80%)"/>
+          <stop offset="100%" stopColor="hsl(0,0%,70%)"/>
         </linearGradient>
       </defs>
       {/* Head */}
@@ -227,8 +227,8 @@ export default function Index() {
   const toggleWishlist = (id: number) =>
     setWishlist(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
 
-  const statusColor = (s: string) => s === "Доставлен" ? "text-emerald-400" : s === "В пути" ? "text-gold" : "text-muted-foreground";
-  const statusDot = (s: string) => s === "Доставлен" ? "bg-emerald-400" : s === "В пути" ? "bg-yellow-400" : "bg-muted-foreground";
+  const statusColor = (s: string) => s === "Доставлен" ? "text-foreground" : s === "В пути" ? "text-muted-foreground" : "text-muted-foreground";
+  const statusDot = (s: string) => s === "Доставлен" ? "bg-foreground" : s === "В пути" ? "bg-muted-foreground" : "bg-muted-foreground";
 
   // ── ONBOARDING ──
   if (!onboarded) {
@@ -236,7 +236,7 @@ export default function Index() {
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         {/* Top logo */}
         <div className="flex items-center justify-center pt-8 pb-4 gap-2">
-          <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
             <span className="text-xs font-display font-semibold text-background">V</span>
           </div>
           <span className="font-display text-xl tracking-[0.15em]">VESTIS</span>
@@ -246,7 +246,7 @@ export default function Index() {
         <div className="flex items-center justify-center gap-2 mb-6 px-8">
           {[1,2,3,4].map(s => (
             <div key={s} className="flex-1 h-0.5 rounded-full overflow-hidden bg-border">
-              <div className={`h-full rounded-full transition-all duration-500 bg-gold ${onboardStep >= s ? "w-full" : "w-0"}`}/>
+              <div className={`h-full rounded-full transition-all duration-500 bg-foreground ${onboardStep >= s ? "w-full" : "w-0"}`}/>
             </div>
           ))}
         </div>
@@ -256,7 +256,7 @@ export default function Index() {
           {/* STEP 1: Пол + телосложение */}
           {onboardStep === 1 && (
             <div className="animate-fade-in-up">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2 text-center">Шаг 1 из 4</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2 text-center">Шаг 1 из 4</p>
               <h2 className="font-display text-3xl font-light text-center mb-1">Ваш тип</h2>
               <p className="text-muted-foreground text-sm text-center mb-6">Это поможет подобрать одежду точно по фигуре</p>
 
@@ -267,7 +267,7 @@ export default function Index() {
                   <button
                     key={g}
                     onClick={() => setProfile(p => ({ ...p, gender: g }))}
-                    className={`relative rounded-2xl border-2 p-4 flex flex-col items-center gap-2 transition-all ${profile.gender === g ? "border-gold bg-gold/5" : "border-border hover:border-gold/40"}`}
+                    className={`relative rounded-2xl border-2 p-4 flex flex-col items-center gap-2 transition-all ${profile.gender === g ? "border-foreground bg-secondary" : "border-border hover:border-foreground/40"}`}
                   >
                     <div className="w-20 h-28">
                       {g === "female"
@@ -277,7 +277,7 @@ export default function Index() {
                     </div>
                     <span className="text-sm font-medium">{g === "female" ? "Женщина" : "Мужчина"}</span>
                     {profile.gender === g && (
-                      <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-gold flex items-center justify-center">
+                      <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-foreground flex items-center justify-center">
                         <Icon name="Check" size={11} className="text-background"/>
                       </div>
                     )}
@@ -292,19 +292,19 @@ export default function Index() {
                   <button
                     key={bt.id}
                     onClick={() => setProfile(p => ({ ...p, bodyType: bt.id }))}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border transition-all text-left ${profile.bodyType === bt.id ? "border-gold bg-gold/5 text-foreground" : "border-border hover:border-gold/30 text-muted-foreground"}`}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border transition-all text-left ${profile.bodyType === bt.id ? "border-foreground bg-secondary text-foreground" : "border-border hover:border-foreground/30 text-muted-foreground"}`}
                   >
                     <span className="text-xl w-7 text-center">{bt.icon}</span>
                     <div>
-                      <p className={`text-sm font-medium ${profile.bodyType === bt.id ? "text-gold" : ""}`}>{bt.label}</p>
+                      <p className={`text-sm font-medium ${profile.bodyType === bt.id ? "text-foreground" : ""}`}>{bt.label}</p>
                       <p className="text-xs text-muted-foreground">{bt.desc}</p>
                     </div>
-                    {profile.bodyType === bt.id && <Icon name="Check" size={15} className="ml-auto text-gold"/>}
+                    {profile.bodyType === bt.id && <Icon name="Check" size={15} className="ml-auto text-foreground"/>}
                   </button>
                 ))}
               </div>
 
-              <Button onClick={() => setOnboardStep(2)} className="w-full h-12 bg-gold text-background hover:bg-gold/80 font-medium">
+              <Button onClick={() => setOnboardStep(2)} className="w-full h-12 bg-foreground text-background hover:opacity-75 font-medium">
                 Продолжить
                 <Icon name="ArrowRight" size={16} className="ml-2"/>
               </Button>
@@ -314,7 +314,7 @@ export default function Index() {
           {/* STEP 2: Имя + город + фото */}
           {onboardStep === 2 && (
             <div className="animate-fade-in-up">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2 text-center">Шаг 2 из 4</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2 text-center">Шаг 2 из 4</p>
               <h2 className="font-display text-3xl font-light text-center mb-1">О вас</h2>
               <p className="text-muted-foreground text-sm text-center mb-6">Имя, город и фото для персонального профиля</p>
 
@@ -322,18 +322,18 @@ export default function Index() {
               <div className="flex flex-col items-center mb-6">
                 <div
                   onClick={() => fileRef.current?.click()}
-                  className="relative w-24 h-24 rounded-full bg-secondary border-2 border-dashed border-gold/40 flex items-center justify-center cursor-pointer hover:border-gold transition-colors overflow-hidden group"
+                  className="relative w-24 h-24 rounded-full bg-secondary border-2 border-dashed border-border flex items-center justify-center cursor-pointer hover:border-foreground transition-colors overflow-hidden group"
                 >
                   {profile.avatar
                     ? <img src={profile.avatar} alt="avatar" className="w-full h-full object-cover"/>
                     : <div className="text-center">
-                        <Icon name="Camera" size={24} className="text-gold/50 group-hover:text-gold mx-auto mb-1 transition-colors"/>
+                        <Icon name="Camera" size={24} className="text-muted-foreground group-hover:text-foreground mx-auto mb-1 transition-colors"/>
                         <span className="text-[10px] text-muted-foreground">Добавить фото</span>
                       </div>
                   }
                   {profile.avatar && (
                     <div className="absolute inset-0 bg-background/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                      <Icon name="Camera" size={20} className="text-gold"/>
+                      <Icon name="Camera" size={20} className="text-foreground"/>
                     </div>
                   )}
                 </div>
@@ -349,7 +349,7 @@ export default function Index() {
                       value={profile.firstName}
                       onChange={e => setProfile(p => ({ ...p, firstName: e.target.value }))}
                       placeholder="Анна"
-                      className="bg-card border-border focus-visible:ring-gold"
+                      className="bg-card border-border focus-visible:ring-foreground"
                     />
                   </div>
                   <div>
@@ -358,7 +358,7 @@ export default function Index() {
                       value={profile.lastName}
                       onChange={e => setProfile(p => ({ ...p, lastName: e.target.value }))}
                       placeholder="Соколова"
-                      className="bg-card border-border focus-visible:ring-gold"
+                      className="bg-card border-border focus-visible:ring-foreground"
                     />
                   </div>
                 </div>
@@ -370,7 +370,7 @@ export default function Index() {
                       <button
                         key={c}
                         onClick={() => setProfile(p => ({ ...p, city: c }))}
-                        className={`px-3 py-2 rounded-lg text-sm border transition-all text-left ${profile.city === c ? "border-gold text-gold bg-gold/5" : "border-border text-muted-foreground hover:border-gold/30"}`}
+                        className={`px-3 py-2 rounded-lg text-sm border transition-all text-left ${profile.city === c ? "border-foreground text-foreground bg-secondary" : "border-border text-muted-foreground hover:border-foreground/30"}`}
                       >
                         {c}
                       </button>
@@ -386,7 +386,7 @@ export default function Index() {
                 <Button
                   onClick={() => setOnboardStep(3)}
                   disabled={!profile.firstName}
-                  className="flex-1 h-12 bg-gold text-background hover:bg-gold/80 disabled:opacity-30"
+                  className="flex-1 h-12 bg-foreground text-background hover:opacity-75 disabled:opacity-30"
                 >
                   Продолжить<Icon name="ArrowRight" size={16} className="ml-2"/>
                 </Button>
@@ -397,7 +397,7 @@ export default function Index() {
           {/* STEP 3: Параметры */}
           {onboardStep === 3 && (
             <div className="animate-fade-in-up">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2 text-center">Шаг 3 из 4</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2 text-center">Шаг 3 из 4</p>
               <h2 className="font-display text-3xl font-light text-center mb-1">Параметры</h2>
               <p className="text-muted-foreground text-sm text-center mb-6">Помогут точно подобрать размер</p>
 
@@ -406,36 +406,36 @@ export default function Index() {
                 <div className="bg-card rounded-xl p-4 border border-border">
                   <div className="flex justify-between text-sm mb-3">
                     <span className="text-muted-foreground">Возраст</span>
-                    <span className="text-gold font-semibold">{profile.age} лет</span>
+                    <span className="text-foreground font-semibold">{profile.age} лет</span>
                   </div>
-                  <Slider value={[profile.age]} onValueChange={v => setProfile(p=>({...p,age:v[0]}))} min={14} max={80} step={1} className="[&_[role=slider]]:bg-gold [&_[role=slider]]:border-gold"/>
+                  <Slider value={[profile.age]} onValueChange={v => setProfile(p=>({...p,age:v[0]}))} min={14} max={80} step={1} className="[&_[role=slider]]:bg-foreground [&_[role=slider]]:border-foreground"/>
                 </div>
 
                 {/* Height */}
                 <div className="bg-card rounded-xl p-4 border border-border">
                   <div className="flex justify-between text-sm mb-3">
                     <span className="text-muted-foreground">Рост</span>
-                    <span className="text-gold font-semibold">{profile.height} см</span>
+                    <span className="text-foreground font-semibold">{profile.height} см</span>
                   </div>
-                  <Slider value={[profile.height]} onValueChange={v => setProfile(p=>({...p,height:v[0]}))} min={150} max={200} step={1} className="[&_[role=slider]]:bg-gold [&_[role=slider]]:border-gold"/>
+                  <Slider value={[profile.height]} onValueChange={v => setProfile(p=>({...p,height:v[0]}))} min={150} max={200} step={1} className="[&_[role=slider]]:bg-foreground [&_[role=slider]]:border-foreground"/>
                 </div>
 
                 {/* Weight */}
                 <div className="bg-card rounded-xl p-4 border border-border">
                   <div className="flex justify-between text-sm mb-3">
                     <span className="text-muted-foreground">Вес</span>
-                    <span className="text-gold font-semibold">{profile.weight} кг</span>
+                    <span className="text-foreground font-semibold">{profile.weight} кг</span>
                   </div>
-                  <Slider value={[profile.weight]} onValueChange={v => setProfile(p=>({...p,weight:v[0]}))} min={40} max={130} step={1} className="[&_[role=slider]]:bg-gold [&_[role=slider]]:border-gold"/>
+                  <Slider value={[profile.weight]} onValueChange={v => setProfile(p=>({...p,weight:v[0]}))} min={40} max={130} step={1} className="[&_[role=slider]]:bg-foreground [&_[role=slider]]:border-foreground"/>
                 </div>
 
                 {/* Shoe size */}
                 <div className="bg-card rounded-xl p-4 border border-border">
                   <div className="flex justify-between text-sm mb-3">
                     <span className="text-muted-foreground">Размер обуви</span>
-                    <span className="text-gold font-semibold">{profile.shoeSize}</span>
+                    <span className="text-foreground font-semibold">{profile.shoeSize}</span>
                   </div>
-                  <Slider value={[profile.shoeSize]} onValueChange={v => setProfile(p=>({...p,shoeSize:v[0]}))} min={34} max={47} step={1} className="[&_[role=slider]]:bg-gold [&_[role=slider]]:border-gold"/>
+                  <Slider value={[profile.shoeSize]} onValueChange={v => setProfile(p=>({...p,shoeSize:v[0]}))} min={34} max={47} step={1} className="[&_[role=slider]]:bg-foreground [&_[role=slider]]:border-foreground"/>
                 </div>
 
                 {/* Hair color */}
@@ -476,12 +476,12 @@ export default function Index() {
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">Номер телефона</label>
                     <Input value={profile.phone} onChange={e=>setProfile(p=>({...p,phone:e.target.value}))}
-                      placeholder="+7 (___) ___-__-__" className="bg-card border-border focus-visible:ring-gold"/>
+                      placeholder="+7 (___) ___-__-__" className="bg-card border-border focus-visible:ring-foreground"/>
                   </div>
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">Email</label>
                     <Input value={profile.email} onChange={e=>setProfile(p=>({...p,email:e.target.value}))}
-                      type="email" placeholder="you@example.com" className="bg-card border-border focus-visible:ring-gold"/>
+                      type="email" placeholder="you@example.com" className="bg-card border-border focus-visible:ring-foreground"/>
                   </div>
                 </div>
               </div>
@@ -490,7 +490,7 @@ export default function Index() {
                 <Button variant="outline" onClick={() => setOnboardStep(2)} className="flex-1 border-border text-muted-foreground hover:text-foreground">
                   <Icon name="ArrowLeft" size={16} className="mr-2"/>Назад
                 </Button>
-                <Button onClick={() => setOnboardStep(4)} className="flex-1 h-12 bg-gold text-background hover:bg-gold/80">
+                <Button onClick={() => setOnboardStep(4)} className="flex-1 h-12 bg-foreground text-background hover:opacity-75">
                   Создать профиль<Icon name="ArrowRight" size={16} className="ml-2"/>
                 </Button>
               </div>
@@ -500,14 +500,14 @@ export default function Index() {
           {/* STEP 4: Результат / визуальный профиль */}
           {onboardStep === 4 && (
             <div className="animate-fade-in-up text-center">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">Профиль создан</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">Профиль создан</p>
               <h2 className="font-display text-3xl font-light mb-6">
                 {profile.firstName ? `Привет, ${profile.firstName}!` : "Ваш профиль готов"}
               </h2>
 
               {/* Visual avatar */}
               <div className="relative mx-auto w-48 h-64 mb-6">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-gold/10 to-gold/5 border border-gold/20"/>
+                <div className="absolute inset-0 rounded-3xl bg-secondary border border-border"/>
                 <div className="absolute inset-0 flex items-end justify-center pb-6 px-8">
                   {profile.gender === "female"
                     ? <FemaleSilhouette bodyType={profile.bodyType}/>
@@ -516,17 +516,17 @@ export default function Index() {
                 </div>
                 {/* Avatar photo overlay top-center */}
                 {profile.avatar && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full border-2 border-gold overflow-hidden">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full border-2 border-foreground overflow-hidden">
                     <img src={profile.avatar} alt="avatar" className="w-full h-full object-cover"/>
                   </div>
                 )}
                 {!profile.avatar && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full border-2 border-gold/40 bg-secondary flex items-center justify-center">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full border-2 border-border bg-secondary flex items-center justify-center">
                     <Icon name="User" size={24} className="text-muted-foreground"/>
                   </div>
                 )}
                 {/* Size badge */}
-                <div className="absolute bottom-2 right-2 bg-gold text-background text-xs font-bold px-2 py-1 rounded-full">
+                <div className="absolute bottom-2 right-2 bg-foreground text-background text-xs font-bold px-2 py-1 rounded-full">
                   {recSize}
                 </div>
               </div>
@@ -555,7 +555,7 @@ export default function Index() {
 
               <Button
                 onClick={() => setOnboarded(true)}
-                className="w-full h-12 bg-gold text-background hover:bg-gold/80 font-medium text-base ai-glow"
+                className="w-full h-12 bg-foreground text-background hover:opacity-75 font-medium text-base"
               >
                 <Icon name="Sparkles" size={18} className="mr-2"/>
                 Подобрать образ
@@ -571,10 +571,10 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-xl border-b border-border">
+      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border">
         <div className="max-w-screen-lg mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center">
               <span className="text-xs font-display font-semibold text-background">V</span>
             </div>
             <span className="font-display text-xl tracking-[0.15em]">VESTIS</span>
@@ -583,7 +583,7 @@ export default function Index() {
           <div className="hidden md:flex items-center gap-6">
             {(["catalog","ai","profile","orders","saved","partners"] as Tab[]).map(tab => (
               <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`nav-link text-sm tracking-wide transition-colors ${activeTab === tab ? "text-gold active" : "text-muted-foreground hover:text-foreground"}`}>
+                className={`nav-link text-sm tracking-wide transition-colors ${activeTab === tab ? "text-foreground active" : "text-muted-foreground hover:text-foreground"}`}>
                 {tab === "catalog" && "Каталог"}
                 {tab === "ai" && "AI-стилист"}
                 {tab === "profile" && "Профиль"}
@@ -596,7 +596,7 @@ export default function Index() {
 
           {/* Avatar chip */}
           <button onClick={() => setActiveTab("profile")} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 rounded-full bg-secondary border border-gold/40 overflow-hidden flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full bg-secondary border border-border overflow-hidden flex items-center justify-center">
               {profile.avatar
                 ? <img src={profile.avatar} alt="avatar" className="w-full h-full object-cover"/>
                 : <Icon name="User" size={16} className="text-muted-foreground"/>
@@ -613,7 +613,7 @@ export default function Index() {
         {activeTab === "catalog" && (
           <div className="animate-fade-in-up">
             <div className="pt-8 pb-5">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">Персональный каталог</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">Персональный каталог</p>
               <h1 className="font-display text-4xl md:text-5xl font-light leading-tight mb-1">
                 {selectedEvent
                   ? `Образы для: ${EVENTS.find(e=>e.id===selectedEvent)?.label}`
@@ -633,11 +633,11 @@ export default function Index() {
                   <button
                     key={ev.id}
                     onClick={() => setSelectedEvent(selectedEvent === ev.id ? null : ev.id)}
-                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-left transition-all ${selectedEvent === ev.id ? "border-gold bg-gold/5 text-gold" : "border-border text-muted-foreground hover:border-gold/30"}`}
+                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-left transition-all ${selectedEvent === ev.id ? "border-foreground bg-secondary text-foreground" : "border-border text-muted-foreground hover:border-foreground/30"}`}
                   >
                     <span className="text-base">{ev.icon}</span>
                     <div>
-                      <p className={`text-xs font-medium ${selectedEvent === ev.id ? "text-gold" : "text-foreground"}`}>{ev.label}</p>
+                      <p className={`text-xs font-medium ${selectedEvent === ev.id ? "text-foreground" : "text-foreground"}`}>{ev.label}</p>
                     </div>
                   </button>
                 ))}
@@ -649,19 +649,19 @@ export default function Index() {
               <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"/>
               <Input value={catalogSearch} onChange={e => setCatalogSearch(e.target.value)}
                 placeholder="Поиск по названию, бренду..."
-                className="pl-9 bg-card border-border h-10 text-sm focus-visible:ring-gold"/>
+                className="pl-9 bg-card border-border h-10 text-sm focus-visible:ring-foreground"/>
             </div>
 
             {/* Reroll */}
             {selectedEvent && (
-              <div className="flex items-center justify-between mb-4 bg-card rounded-xl border border-gold/20 px-4 py-3">
+              <div className="flex items-center justify-between mb-4 bg-card rounded-xl border border-border px-4 py-3">
                 <div className="flex items-center gap-2">
-                  <Icon name="Sparkles" size={14} className="text-gold"/>
-                  <span className="text-sm text-muted-foreground">Подбор по размеру <span className="text-gold font-medium">{recSize}</span></span>
+                  <Icon name="Sparkles" size={14} className="text-foreground"/>
+                  <span className="text-sm text-muted-foreground">Подбор по размеру <span className="text-foreground font-medium">{recSize}</span></span>
                 </div>
                 <button
                   onClick={() => setRerollCount(c => c+1)}
-                  className="flex items-center gap-1.5 text-xs text-gold hover:text-gold/70 transition-colors"
+                  className="flex items-center gap-1.5 text-xs text-foreground hover:opacity-70 transition-opacity"
                 >
                   <Icon name="RefreshCw" size={13}/>
                   Другие варианты
@@ -679,12 +679,12 @@ export default function Index() {
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"/>
                     <div className="absolute top-2 left-2 flex gap-1 flex-wrap">
                       {item.tags.map(tag => (
-                        <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-gold/90 text-background font-medium">{tag}</span>
+                        <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-foreground text-background font-medium">{tag}</span>
                       ))}
                     </div>
                     <button onClick={() => toggleWishlist(item.id)}
                       className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/60 backdrop-blur flex items-center justify-center hover:scale-110 transition-transform">
-                      <Icon name="Heart" size={15} className={wishlist.includes(item.id) ? "fill-yellow-500 text-yellow-500" : "text-foreground"}/>
+                      <Icon name="Heart" size={15} className={wishlist.includes(item.id) ? "fill-foreground text-foreground" : "text-foreground"}/>
                     </button>
                     {!item.inStock && (
                       <div className="absolute inset-0 bg-background/50 flex items-center justify-center">
@@ -693,12 +693,12 @@ export default function Index() {
                     )}
                   </div>
                   <div className="p-3">
-                    <p className="text-[10px] text-gold tracking-widest uppercase mb-1">{item.store}</p>
+                    <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-1">{item.store}</p>
                     <p className="text-sm font-medium leading-snug mb-2 line-clamp-2">{item.name}</p>
                     {/* Size badges */}
                     <div className="flex gap-1 flex-wrap mb-2">
                       {item.sizes.map(s => (
-                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded border ${s === recSize || s === String(profile.shoeSize) ? "border-gold text-gold bg-gold/10" : "border-border text-muted-foreground"}`}>{s}</span>
+                        <span key={s} className={`text-[10px] px-1.5 py-0.5 rounded border ${s === recSize || s === String(profile.shoeSize) ? "border-foreground text-foreground bg-secondary" : "border-border text-muted-foreground"}`}>{s}</span>
                       ))}
                     </div>
                     <div className="flex items-center justify-between">
@@ -707,13 +707,13 @@ export default function Index() {
                         {item.oldPrice && <span className="text-xs text-muted-foreground line-through ml-1.5">{item.oldPrice.toLocaleString()}</span>}
                       </div>
                       <div className="flex items-center gap-0.5">
-                        <Icon name="Star" size={11} className="fill-yellow-500 text-yellow-500"/>
+                        <Icon name="Star" size={11} className="fill-foreground text-foreground"/>
                         <span className="text-xs text-muted-foreground">{item.rating}</span>
                       </div>
                     </div>
                   </div>
                   <div className="px-3 pb-3">
-                    <Button size="sm" disabled={!item.inStock} className="w-full h-8 text-xs bg-gold text-background hover:bg-gold/80 disabled:opacity-30">
+                    <Button size="sm" disabled={!item.inStock} className="w-full h-8 text-xs bg-foreground text-background hover:opacity-75 disabled:opacity-30">
                       {item.inStock ? "В корзину" : "Уведомить"}
                     </Button>
                   </div>
@@ -735,14 +735,14 @@ export default function Index() {
         {activeTab === "ai" && (
           <div className="animate-fade-in-up max-w-lg">
             <div className="pt-8 pb-6">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">Умный подбор</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">Умный подбор</p>
               <h1 className="font-display text-4xl font-light">AI‑стилист</h1>
               <p className="text-muted-foreground text-sm mt-1">Персональные рекомендации на основе вашего профиля</p>
             </div>
 
-            <div className="bg-card rounded-2xl border border-gold/20 p-5 mb-5 ai-glow">
+            <div className="bg-card rounded-2xl border border-border p-5 mb-5">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-secondary flex items-center justify-center border border-gold/30 shrink-0">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-secondary flex items-center justify-center border border-border shrink-0">
                   {profile.avatar ? <img src={profile.avatar} alt="" className="w-full h-full object-cover"/> : <Icon name="User" size={20} className="text-muted-foreground"/>}
                 </div>
                 <div>
@@ -756,10 +756,10 @@ export default function Index() {
                 {EVENTS.slice(0,6).map(ev => (
                   <button key={ev.id}
                     onClick={() => { setSelectedEvent(ev.id); setActiveTab("catalog"); }}
-                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-border text-left hover:border-gold/50 transition-all group">
+                    className="flex items-center gap-2 px-3 py-2.5 rounded-xl border border-border text-left hover:border-foreground/50 transition-all group">
                     <span className="text-base">{ev.icon}</span>
                     <div>
-                      <p className="text-xs font-medium group-hover:text-gold transition-colors">{ev.label}</p>
+                      <p className="text-xs font-medium group-hover:text-foreground transition-colors">{ev.label}</p>
                       <p className="text-[10px] text-muted-foreground">{ev.desc}</p>
                     </div>
                   </button>
@@ -768,9 +768,9 @@ export default function Index() {
             </div>
 
             <div className="bg-card rounded-xl border border-border p-4 flex items-center gap-3">
-              <Icon name="Info" size={16} className="text-gold shrink-0"/>
+              <Icon name="Info" size={16} className="text-foreground shrink-0"/>
               <p className="text-xs text-muted-foreground">
-                AI подбирает вещи по вашему размеру <span className="text-gold">{recSize}</span>, обуви <span className="text-gold">{profile.shoeSize}</span> и телосложению из каталогов Zara, H&M и Mango
+                AI подбирает вещи по вашему размеру <span className="text-foreground">{recSize}</span>, обуви <span className="text-foreground">{profile.shoeSize}</span> и телосложению из каталогов Zara, H&M и Mango
               </p>
             </div>
           </div>
@@ -780,17 +780,17 @@ export default function Index() {
         {activeTab === "profile" && (
           <div className="animate-fade-in-up max-w-lg">
             <div className="pt-8 pb-6">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">Личный кабинет</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">Личный кабинет</p>
               <h1 className="font-display text-4xl font-light">Мой профиль</h1>
             </div>
 
             <div className="bg-card rounded-2xl p-6 border border-border mb-4">
               <div className="flex items-center gap-5 mb-4">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-full bg-secondary border-2 border-gold/40 overflow-hidden flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-secondary border-2 border-border overflow-hidden flex items-center justify-center">
                     {profile.avatar ? <img src={profile.avatar} alt="" className="w-full h-full object-cover"/> : <Icon name="User" size={36} className="text-muted-foreground"/>}
                   </div>
-                  <button onClick={() => fileRef.current?.click()} className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-gold flex items-center justify-center hover:bg-gold/80 transition-colors">
+                  <button onClick={() => fileRef.current?.click()} className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-foreground flex items-center justify-center hover:opacity-75 transition-opacity">
                     <Icon name="Camera" size={13} className="text-background"/>
                   </button>
                   <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload}/>
@@ -799,7 +799,7 @@ export default function Index() {
                   <p className="font-display text-2xl font-light">{profile.firstName} {profile.lastName}</p>
                   <p className="text-sm text-muted-foreground">{profile.email || "email не указан"}</p>
                   <div className="flex items-center gap-3 mt-1">
-                    <p className="text-xs text-gold flex items-center gap-1"><Icon name="MapPin" size={11}/>{profile.city}</p>
+                    <p className="text-xs text-foreground flex items-center gap-1"><Icon name="MapPin" size={11}/>{profile.city}</p>
                     <p className="text-xs text-muted-foreground">{profile.zodiac}</p>
                   </div>
                 </div>
@@ -835,7 +835,7 @@ export default function Index() {
                 { icon: "Sparkles", label: "Подборок", value: "1" },
               ].map(s => (
                 <div key={s.label} className="bg-card rounded-xl p-4 border border-border text-center">
-                  <Icon name={s.icon as never} size={20} fallback="Star" className="mx-auto mb-1 text-gold"/>
+                  <Icon name={s.icon as never} size={20} fallback="Star" className="mx-auto mb-1 text-foreground"/>
                   <p className="font-display text-2xl font-light">{s.value}</p>
                   <p className="text-[11px] text-muted-foreground">{s.label}</p>
                 </div>
@@ -854,7 +854,7 @@ export default function Index() {
         {activeTab === "orders" && (
           <div className="animate-fade-in-up max-w-lg">
             <div className="pt-8 pb-6">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">История покупок</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">История покупок</p>
               <h1 className="font-display text-4xl font-light">Мои заказы</h1>
             </div>
             <div className="space-y-3">
@@ -875,14 +875,14 @@ export default function Index() {
                   <div className="space-y-1 mb-3">
                     {order.items.map(item => (
                       <p key={item} className="text-sm text-muted-foreground flex items-center gap-2">
-                        <Icon name="Package2" size={12} className="text-gold/60 shrink-0"/>{item}
+                        <Icon name="Package2" size={12} className="text-muted-foreground shrink-0"/>{item}
                       </p>
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="font-semibold">{order.total.toLocaleString()} ₽</span>
                     <div className="flex items-center gap-2">
-                      <button className="text-xs text-muted-foreground flex items-center gap-1 hover:text-gold transition-colors">
+                      <button className="text-xs text-muted-foreground flex items-center gap-1 hover:text-foreground transition-colors">
                         <span className="text-base">🚀</span> Яндекс Доставка
                       </button>
                     </div>
@@ -897,7 +897,7 @@ export default function Index() {
         {activeTab === "saved" && (
           <div className="animate-fade-in-up">
             <div className="pt-8 pb-6">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">Мои сохранения</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">Мои сохранения</p>
               <h1 className="font-display text-4xl font-light">Избранное</h1>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -907,7 +907,7 @@ export default function Index() {
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover"/>
                   </div>
                   <div className="p-3">
-                    <p className="text-xs text-gold mb-0.5">{item.brand}</p>
+                    <p className="text-xs text-muted-foreground mb-0.5">{item.brand}</p>
                     <p className="text-xs font-medium line-clamp-2 mb-2">{item.name}</p>
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-semibold">{item.price.toLocaleString()} ₽</span>
@@ -933,7 +933,7 @@ export default function Index() {
         {activeTab === "partners" && (
           <div className="animate-fade-in-up">
             <div className="pt-8 pb-6">
-              <p className="text-xs tracking-[0.2em] text-gold uppercase mb-2">Экосистема VESTIS</p>
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase mb-2">Экосистема VESTIS</p>
               <h1 className="font-display text-4xl md:text-5xl font-light leading-tight mb-2">Партнёры</h1>
               <p className="text-muted-foreground text-sm max-w-md">
                 Магазины, стилисты и сервисы доставки, которые обучают нашу нейросеть и зарабатывают вместе с нами
@@ -954,26 +954,26 @@ export default function Index() {
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {items.map(partner => (
-                      <div key={partner.id} className={`bg-gradient-to-br ${partner.color} rounded-2xl border border-border p-5 card-hover relative overflow-hidden`}>
-                        <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-gold/5 -translate-x-4 -translate-y-8"/>
+                      <div key={partner.id} className="bg-card rounded-2xl border border-border p-5 card-hover relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-secondary -translate-x-4 -translate-y-8"/>
                         <div className="flex items-start gap-4">
-                          <div className="text-3xl w-12 h-12 flex items-center justify-center bg-background/20 rounded-xl shrink-0">
+                          <div className="text-3xl w-12 h-12 flex items-center justify-center bg-secondary rounded-xl shrink-0">
                             {partner.logo}
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
                               <p className="font-medium">{partner.name}</p>
-                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold/20 text-gold border border-gold/20">{partner.tag}</span>
+                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-foreground border border-border">{partner.tag}</span>
                             </div>
                             <p className="text-sm text-muted-foreground">{partner.desc}</p>
                           </div>
                         </div>
                         <div className="mt-4 flex gap-2">
-                          <Button size="sm" className="h-7 text-xs bg-gold text-background hover:bg-gold/80">
+                          <Button size="sm" className="h-7 text-xs bg-foreground text-background hover:opacity-75">
                             {type === "delivery" ? "Подключить" : "Подробнее"}
                           </Button>
                           {type === "stylist" && (
-                            <Button size="sm" variant="outline" className="h-7 text-xs border-gold/30 text-gold hover:bg-gold/10">
+                            <Button size="sm" variant="outline" className="h-7 text-xs border-border text-foreground hover:bg-secondary">
                               Обучить AI
                             </Button>
                           )}
@@ -986,8 +986,8 @@ export default function Index() {
             })}
 
             {/* CTA — become partner */}
-            <div className="bg-card rounded-2xl border border-gold/30 p-6 text-center ai-glow">
-              <Icon name="Handshake" size={32} className="text-gold mx-auto mb-3" fallback="Star"/>
+            <div className="bg-card rounded-2xl border border-border p-6 text-center">
+              <Icon name="Handshake" size={32} className="text-foreground mx-auto mb-3" fallback="Star"/>
               <h3 className="font-display text-2xl font-light mb-2">Стать партнёром</h3>
               <p className="text-sm text-muted-foreground mb-4 max-w-sm mx-auto">
                 Интегрируйте ваш магазин, обучайте нейросеть и получайте клиентов. Стилисты зарабатывают на рекомендациях.
@@ -999,12 +999,12 @@ export default function Index() {
                   { icon: "Truck", label: "Доставка" },
                 ].map(item => (
                   <div key={item.label} className="bg-secondary rounded-xl p-3">
-                    <Icon name={item.icon as never} size={20} fallback="Star" className="text-gold mx-auto mb-1"/>
+                    <Icon name={item.icon as never} size={20} fallback="Star" className="text-foreground mx-auto mb-1"/>
                     <p className="text-xs text-muted-foreground">{item.label}</p>
                   </div>
                 ))}
               </div>
-              <Button className="bg-gold text-background hover:bg-gold/80 h-11 px-8">
+              <Button className="bg-foreground text-background hover:opacity-75 h-11 px-8">
                 <Icon name="ArrowRight" size={15} className="mr-2"/>
                 Оставить заявку
               </Button>
@@ -1018,7 +1018,7 @@ export default function Index() {
         <div className="flex">
           {(["catalog","ai","profile","orders","partners"] as Tab[]).map(tab => (
             <button key={tab} onClick={() => setActiveTab(tab)}
-              className={`flex-1 flex flex-col items-center py-2.5 gap-0.5 transition-colors ${activeTab === tab ? "text-gold" : "text-muted-foreground"}`}>
+              className={`flex-1 flex flex-col items-center py-2.5 gap-0.5 transition-colors ${activeTab === tab ? "text-foreground" : "text-muted-foreground"}`}>
               <Icon name={tab==="catalog"?"LayoutGrid":tab==="ai"?"Sparkles":tab==="profile"?"User":tab==="orders"?"Package":"Handshake"} size={19} fallback="Circle"/>
               <span className="text-[9px]">
                 {tab==="catalog"&&"Каталог"}{tab==="ai"&&"AI"}{tab==="profile"&&"Профиль"}{tab==="orders"&&"Заказы"}{tab==="partners"&&"Партнёры"}
